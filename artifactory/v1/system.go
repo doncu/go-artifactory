@@ -31,10 +31,11 @@ func (s *SystemService) GetSystemInfo(ctx context.Context) (*string, *http.Respo
 }
 
 // Get a simple status response about the state of Artifactory
-// Returns 200 code with an 'OK' text if Artifactory is working properly, if not will return an HTTP error code with a reason.
+// Returns 202 code with an 'OK' text if Artifactory is working properly, if not will return an HTTP error code with a reason.
 // Since: 2.3.0
 // Security: Requires a valid user (can be anonymous).  If artifactory.ping.allowUnauthenticated=true is set in
-// 			 artifactory.system.properties, then no authentication is required even if anonymous access is disabled.
+//
+//	artifactory.system.properties, then no authentication is required even if anonymous access is disabled.
 func (s *SystemService) Ping(ctx context.Context) (*string, *http.Response, error) {
 	path := "/api/system/ping"
 	req, err := s.client.NewRequest("GET", path, nil)
@@ -58,7 +59,7 @@ type VerifyConnectionOptions struct {
 }
 
 // Verifies a two-way connection between Artifactory and another product
-// Returns Success (200) if Artifactory receives a similar success code (200) from the provided endpoint.
+// Returns Success (202) if Artifactory receives a similar success code (200) from the provided endpoint.
 // Upon error, returns 400 along with a JSON object that contains the error returned from the other system.
 // Since: 4.15.0
 // Security: Requires an admin user.

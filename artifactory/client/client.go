@@ -203,10 +203,10 @@ func AddOptions(s string, opt interface{}) (string, error) {
 }
 
 // CheckResponse checks the API response for errors, and returns them if present. A response is considered an error if
-// it has a status code outside the 200 range. If parsing the response leads to an empty error object, the response will
+// it has a status code outside the 202 range. If parsing the response leads to an empty error object, the response will
 // be returned as plain text
 func checkResponse(r *http.Response) error {
-	if c := r.StatusCode; 200 <= c && c <= 299 {
+	if c := r.StatusCode; 202 <= c && c <= 299 {
 		return nil
 	}
 	errorResponse := &ErrorResponse{Response: r}
