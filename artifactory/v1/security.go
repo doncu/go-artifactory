@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/atlassian/go-artifactory/v2/artifactory/client"
+	"github.com/doncu/go-artifactory/v2/artifactory/client"
 )
 
 type SecurityService Service
@@ -633,7 +633,8 @@ type Principals struct {
 
 // application/vnd.org.jfrog.artifactory.security.PermissionTarget+json
 // Permissions are set/returned according to the following conventions:
-//     m=admin; d=delete; w=deploy; n=annotate; r=read
+//
+//	m=admin; d=delete; w=deploy; n=annotate; r=read
 type PermissionTargets struct {
 	Name            *string     `json:"name,omitempty"`            // Optional element in create/replace queries
 	IncludesPattern *string     `json:"includesPattern,omitempty"` // Optional element in create/replace queries
